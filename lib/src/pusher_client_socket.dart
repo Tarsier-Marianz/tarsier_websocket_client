@@ -274,7 +274,8 @@ class PusherClient {
   ///
   /// The [listener] is a callback that is invoked whenever the client's
   /// connection state changes. The new state is passed as a parameter.
-  void onConnectionStateChange(Function(ConnectionState) listener) => bind("connection_state_changed", listener);
+  void onConnectionStateChange(Function(ConnectionState) listener) =>
+      bind("connection_state_changed", listener);
 
   /// Binds a listener to the connecting event.
   ///
@@ -292,7 +293,8 @@ class PusherClient {
   ///
   /// This event is specific to the "pusher:connection_established" message
   /// from the server. The [listener] callback is invoked when the event occurs.
-  void onConnectionEstablished(Function listener) => bind("pusher:connection_established", listener);
+  void onConnectionEstablished(Function listener) =>
+      bind("pusher:connection_established", listener);
 
   /// Binds a listener to the reconnecting event.
   ///
@@ -322,13 +324,15 @@ class PusherClient {
   ///
   /// The [listener] callback is invoked when the client encounters
   /// a connection error.
-  void onConnectionError(Function(dynamic error) listener) => bind('connection_error', listener);
+  void onConnectionError(Function(dynamic error) listener) =>
+      bind('connection_error', listener);
 
   /// Binds a listener to the error event.
   ///
   /// This event is triggered for general errors encountered by the client.
   /// The [listener] callback is invoked with the error details.
-  void onError(Function(dynamic error) listener) => bind('pusher:error', listener);
+  void onError(Function(dynamic error) listener) =>
+      bind('pusher:error', listener);
 
   /// Internal collection of active channels.
   ///
@@ -350,8 +354,11 @@ class PusherClient {
   /// does not start with "private-", it is automatically prefixed. The optional
   /// [subscribe] parameter, if set to `true`, subscribes to the channel before
   /// returning it.
-  PrivateChannel private(String channelName, {bool subscribe = false}) => channel(
-        channelName.startsWith("private-") ? channelName : "private-$channelName",
+  PrivateChannel private(String channelName, {bool subscribe = false}) =>
+      channel(
+        channelName.startsWith("private-")
+            ? channelName
+            : "private-$channelName",
         subscribe: subscribe,
       );
 
@@ -361,8 +368,12 @@ class PusherClient {
   /// does not start with "private-encrypted-", it is automatically prefixed.
   /// The optional [subscribe] parameter, if set to `true`, subscribes to the
   /// channel before returning it.
-  PrivateChannel privateEncrypted(String channelName, {bool subscribe = false}) => channel(
-        channelName.startsWith("private-encrypted-") ? channelName : "private-encrypted-$channelName",
+  PrivateChannel privateEncrypted(String channelName,
+          {bool subscribe = false}) =>
+      channel(
+        channelName.startsWith("private-encrypted-")
+            ? channelName
+            : "private-encrypted-$channelName",
         subscribe: subscribe,
       );
 
@@ -372,8 +383,11 @@ class PusherClient {
   /// does not start with "presence-", it is automatically prefixed. The optional
   /// [subscribe] parameter, if set to `true`, subscribes to the channel before
   /// returning it.
-  PresenceChannel presence(String channelName, {bool subscribe = false}) => channel(
-        channelName.startsWith("presence-") ? channelName : "presence-$channelName",
+  PresenceChannel presence(String channelName, {bool subscribe = false}) =>
+      channel(
+        channelName.startsWith("presence-")
+            ? channelName
+            : "presence-$channelName",
         subscribe: subscribe,
       );
 
@@ -381,7 +395,8 @@ class PusherClient {
   ///
   /// The [channelName] parameter specifies the channel's name. Returns the
   /// subscribed channel.
-  T subscribe<T extends Channel>(String channelName) => channel<T>(channelName, subscribe: true);
+  T subscribe<T extends Channel>(String channelName) =>
+      channel<T>(channelName, subscribe: true);
 
   /// Unsubscribes from a channel by its name.
   ///

@@ -77,9 +77,9 @@ class PusherOptions {
   ///
   /// If not provided, a default decryption handler is used.
   final Map<String, dynamic> Function(
-      Uint8List sharedSecret,
-      Map<String, dynamic> data,
-      )? channelDecryption;
+    Uint8List sharedSecret,
+    Map<String, dynamic> data,
+  )? channelDecryption;
 
   /// Creates an instance of [PusherOptions].
   ///
@@ -170,9 +170,9 @@ class PusherOptions {
   /// Uses the [channelDecryption] handler if provided, otherwise defaults
   /// to [defaultChannelDecryptionHandler].
   Map<String, dynamic> decryptChannelData(
-      Uint8List sharedSecret,
-      Map<String, dynamic> data,
-      ) =>
+    Uint8List sharedSecret,
+    Map<String, dynamic> data,
+  ) =>
       (channelDecryption ?? defaultChannelDecryptionHandler)(
         sharedSecret,
         data,
@@ -184,9 +184,9 @@ class PusherOptions {
   /// are not present, an exception is thrown. Decrypts the ciphertext using the
   /// provided shared secret and nonce.
   Map<String, dynamic> defaultChannelDecryptionHandler(
-      Uint8List sharedSecret,
-      Map<String, dynamic> data,
-      ) {
+    Uint8List sharedSecret,
+    Map<String, dynamic> data,
+  ) {
     if (!data.containsKey("ciphertext") || !data.containsKey("nonce")) {
       throw Exception(
         "Unexpected format for encrypted event, expected object with `ciphertext` and `nonce` fields, got: $data",

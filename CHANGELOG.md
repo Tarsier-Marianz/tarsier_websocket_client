@@ -1,4 +1,4 @@
-## 1.0.0
+## 1.0.0-dev
 - ### Added
     - Initial release of the `Tarsier WebSocket Client` package.
     - Implemented the `TarsierWebsocketClient` class for managing WebSocket connections and interacting with real-time events.

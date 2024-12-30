@@ -41,7 +41,7 @@ class PrivateEncryptedChannel extends PrivateChannel {
   /// Handles the incoming event by decrypting the data, if it is not a Pusher internal event.
   ///
   /// This overrides the base [handleEvent] method from [PrivateChannel].
-  /// If the event data is a map and does not start with "pusher:", it will 
+  /// If the event data is a map and does not start with "pusher:", it will
   /// attempt to decrypt the data before passing it to the superclass method.
   /// Logs an error if decryption fails.
   @override

@@ -6,7 +6,7 @@ import 'channel.dart';
 
 /// Represents a private channel in Pusher, which allows for authenticated user interactions.
 ///
-/// The `PrivateChannel` class extends the base `Channel` class 
+/// The `PrivateChannel` class extends the base `Channel` class
 /// and adds functionalities specific to private channels, including
 /// user authentication and subscription management.
 class PrivateChannel extends Channel {
@@ -39,12 +39,14 @@ class PrivateChannel extends Channel {
   /// the authentication data needed to authenticate the channel
   /// for the current user. If the client is not connected or already
   /// subscribed (unless forced), this operation will not be performed.
-  /// 
+  ///
   /// Throws an [Exception] if the authentication response is invalid
   /// or if the subscription fails.
   @override
   void subscribe([bool force = false]) async {
-    if (!client.connected || (subscribed && !force) || client.socketId == null) {
+    if (!client.connected ||
+        (subscribed && !force) ||
+        client.socketId == null) {
       return;
     }
 
@@ -126,7 +128,8 @@ class PrivateChannel extends Channel {
   /// The [listener] function will be called whenever the subscription
   /// count changes, allowing for real-time updates on the number of
   /// subscribers to the channel.
-  void onSubscriptionCount(Function listener) => bind("pusher:subscription_count", listener);
+  void onSubscriptionCount(Function listener) =>
+      bind("pusher:subscription_count", listener);
 
   /// Sends an event to the channel.
   ///
@@ -144,4 +147,3 @@ class PrivateChannel extends Channel {
     client.sendEvent(event, data, name);
   }
 }
-

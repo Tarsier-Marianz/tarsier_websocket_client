@@ -1,6 +1,6 @@
 name: tarsier_websocket_client
 description: A starting point for Dart libraries or applications.
-version: 1.0.0
+version: 1.0.0-dev
 repository: https://github.com/marianz-bonfire/tarsier_websocket_client
 homepage: https://github.com/marianz-bonfire/tarsier_websocket_client
 issue_tracker: https://github.com/marianz-bonfire/tarsier_websocket_client/issues
@@ -16,6 +16,7 @@ dev_dependencies:
   test: ^1.16.0
 dependencies:
   http: ^0.13.5
+  meta: ^1.16.0
   pinenacl: ^0.5.1
   uuid: ^4.2.2
   web_socket_client: ^0.1.0-dev.1

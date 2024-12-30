@@ -82,7 +82,9 @@ class Channel {
   /// does nothing. If [force] is `true`, it re-subscribes to the channel even
   /// if it is already subscribed.
   void subscribe([bool force = false]) async {
-    if (!client.connected || (subscribed && !force) || client.socketId == null) {
+    if (!client.connected ||
+        (subscribed && !force) ||
+        client.socketId == null) {
       return;
     }
 

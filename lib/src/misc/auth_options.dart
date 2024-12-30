@@ -22,11 +22,11 @@ class PusherAuthOptions {
   /// The optional [headers] parameter allows customization of the headers
   /// sent with authentication requests.
   const PusherAuthOptions(
-      this.endpoint, {
-        this.headers = const {
-          'Accept': 'application/json',
-        },
-      });
+    this.endpoint, {
+    this.headers = const {
+      'Accept': 'application/json',
+    },
+  });
 
   /// Returns a string representation of the [PusherAuthOptions] instance.
   ///

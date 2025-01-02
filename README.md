@@ -1,7 +1,9 @@
 [![pub package](https://img.shields.io/pub/v/tarsier_websocket_client.svg)](https://pub.dev/packages/tarsier_websocket_client)
 [![package publisher](https://img.shields.io/pub/publisher/tarsier_websocket_client.svg)](https://pub.dev/packages/tarsier_websocket_client/publisher)
 
+<p align="center">
 <img height="280" src="https://raw.githubusercontent.com/marianz-bonfire/tarsier_websocket_client/master/assets/logo.png">
+</p>
 
 **Tarsier WebSocket Client** is a Dart package for managing WebSocket connections and real-time event handling. It is designed to be compatible with the Pusher WebSocket protocol used by [pusher.com](https://pusher.com/docs/channels/). This package extends the functionality of the `pusher_client` package to support the *Windows platform*, while maintaining compatibility with other platforms.
 
@@ -124,10 +126,11 @@ final client = TarsierWebsocketClient(
 - `disconnect()`: Closes the connection.
 - `subscribe(channelName)`: Subscribes to a channel by name.
 - `unsubscribe(channelName)`: Unsubscribes from a channel.
+- `unsubscribeAll()`: Unsubscribes from all channels.
 - `bind(event, listener)`: Binds a listener to an event.
 - `unbind(event, listener)`: Unbinds a listener from an event.
 ## 🎖️ License
 This project is licensed under the [MIT License](https://mit-license.org/). See the LICENSE file for details.
 ## 🐞 Contributing
 Contributions are welcome! Please submit a pull request or file an issue for any bugs or feature requests
-on [GitHub](https://github.com/marianz-bonfire/tarsier_env).
+on [GitHub](https://github.com/marianz-bonfire/tarsier_websocket_client).

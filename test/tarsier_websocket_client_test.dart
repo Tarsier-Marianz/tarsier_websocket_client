@@ -8,7 +8,7 @@ void main() {
       host: '127.0.0.1',
       wsPort: 6001,
       encrypted: false, // (Note: enable it if you are using wss connection)
-      authOptions: PusherAuthOptions(
+      auth: PusherAuthOptions(
         'http://localhost/broadcasting/auth',
       ),
       autoConnect: false,

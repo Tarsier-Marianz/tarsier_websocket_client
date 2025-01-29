@@ -3,6 +3,7 @@ import 'dart:developer' as dev;
 
 import 'package:pinenacl/api.dart';
 import 'package:pinenacl/x25519.dart' show SecretBox;
+import 'package:tarsier_websocket_client/src/utils/print_debug.dart';
 
 import 'auth_options.dart';
 
@@ -51,7 +52,7 @@ class PusherOptions {
   final Map<String, String> parameters;
 
   /// Authentication options for secure connections.
-  final PusherAuthOptions authOptions;
+  final PusherAuthOptions auth;
 
   /// Whether to enable logging for client actions.
   ///
@@ -101,7 +102,7 @@ class PusherOptions {
       'version': '0.0.2',
       "flash": "false",
     },
-    required this.authOptions,
+    required this.auth,
     this.enableLogging = false,
     this.autoConnect = true,
     this.maxReconnectionAttempts = 6,
@@ -146,13 +147,18 @@ class PusherOptions {
   /// The optional [channel] and [message] provide additional context.
   void log(String level, [String? channel, String? message]) {
     if (enableLogging) {
-      dev.log([
-        "[PUSHER_",
+      String tag = [
+        "PUSHER_",
         if (channel != null) "CHANNEL_",
-        "$level]",
-        if (channel != null) "\n  channel: $channel",
-        if (message != null) "\n  $message"
-      ].join(""));
+        level,
+      ].join("");
+
+      String value = [
+        if (channel != null) " channel: $channel",
+        if (message != null) " $message"
+      ].join("");
+
+      printLog(tag: tag, message: value, type: DebugType.info);
     }
   }
 

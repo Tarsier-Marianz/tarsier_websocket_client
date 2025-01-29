@@ -1,5 +1,5 @@
-import '../utils/collection.dart';
-import '../utils/member.dart';
+import '../models/collection.dart';
+import '../models/member.dart';
 import 'private_channel.dart';
 
 /// Represents a presence channel in Pusher.

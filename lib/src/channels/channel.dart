@@ -1,8 +1,7 @@
 import 'package:meta/meta.dart';
-import 'package:tarsier_websocket_client/src/misc/events_listeners.collection.dart';
+import 'package:tarsier_websocket_client/src/collections/events_listeners.collection.dart';
 import 'package:tarsier_websocket_client/src/misc/options.dart';
-
-import '../pusher_client_socket.dart';
+import 'package:tarsier_websocket_client/src/pusher_client_socket.dart';
 
 export 'private_channel.dart';
 export 'private_encrypted_channel.dart';
@@ -38,7 +37,7 @@ class Channel {
   PusherOptions get options => client.options;
 
   /// Retrieves the authentication options for the Pusher client.
-  PusherAuthOptions get authOptions => options.authOptions;
+  PusherAuthOptions get authOptions => options.auth;
 
   bool _subscribed = false;
 
@@ -120,7 +119,7 @@ class Channel {
   /// The [event] parameter specifies the name of the event, and [data]
   /// contains the event payload.
   void handleEvent(String event, dynamic data) {
-    options.log("EVENT", name, "event: $event\n  data: $data");
+    options.log("EVENT", name, "event: $event  data: $data");
 
     _eventsListenersCollection.handleEvent(event, data);
   }
@@ -151,6 +150,6 @@ class Channel {
   /// This is used internally by the Pusher client. The [listener] parameter
   /// is the callback function to execute when the event is triggered.
   void onInternalSubscriptionSuccess(Function listener) {
-    client.bind("pusher_internal:subscription_succeeded", listener);
+    bind("pusher_internal:subscription_succeeded", listener);
   }
 }

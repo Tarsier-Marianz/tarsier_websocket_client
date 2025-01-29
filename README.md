@@ -1,13 +1,39 @@
-[![pub package](https://img.shields.io/pub/v/tarsier_websocket_client.svg)](https://pub.dev/packages/tarsier_websocket_client)
-[![package publisher](https://img.shields.io/pub/publisher/tarsier_websocket_client.svg)](https://pub.dev/packages/tarsier_websocket_client/publisher)
+<p align="center">
+  <a href="https://pub.dev/packages/tarsier_websocket_client">
+    <img height="260" src="https://raw.githubusercontent.com/marianz-bonfire/tarsier_websocket_client/master/assets/logo.png">
+  </a>
+  <h1 align="center">Tarsier WebSocket Client</h1>
+</p>
 
 <p align="center">
-<img height="280" src="https://raw.githubusercontent.com/marianz-bonfire/tarsier_websocket_client/master/assets/logo.png">
+  <a href="https://pub.dev/packages/tarsier_websocket_client">
+    <img src="https://img.shields.io/pub/v/tarsier_websocket_client?label=pub.dev&labelColor=333940&logo=dart">
+  </a>
+  <a href="https://pub.dev/packages/tarsier_websocket_client/score">
+    <img src="https://img.shields.io/pub/points/tarsier_websocket_client?color=2E8B57&label=pub%20points">
+  </a>
+  <a href="https://github.com/marianz-bonfire/tarsier_websocket_client/actions/workflows/dart.yml">
+    <img src="https://github.com/marianz-bonfire/tarsier_websocket_client/actions/workflows/dart.yml/badge.svg">
+  </a>
+  <a href="https://tarsier-marianz.blogspot.com">
+    <img src="https://img.shields.io/static/v1?label=website&message=tarsier-marianz&labelColor=135d34&logo=blogger&logoColor=white&color=fd3a13">
+  </a>
 </p>
+
+<p align="center">
+  <a href="https://pub.dev/documentation/tarsier_websocket_client/latest/">Documentation</a> •
+  <a href="https://github.com/marianz-bonfire/tarsier_websocket_client/issues">Issues</a> •
+  <a href="https://github.com/marianz-bonfire/tarsier_websocket_client/tree/master/example">Example</a> •
+  <a href="https://github.com/marianz-bonfire/tarsier_websocket_client/blob/master/LICENSE">License</a> •
+  <a href="https://pub.dev/packages/tarsier_websocket_client">Pub.dev</a>
+</p>
+
+
 
 **Tarsier WebSocket Client** is a Dart package for managing WebSocket connections and real-time event handling. It is designed to be compatible with the Pusher WebSocket protocol used by [pusher.com](https://pusher.com/docs/channels/). This package extends the functionality of the `pusher_client` package to support the *Windows platform*, while maintaining compatibility with other platforms.
 
-This package has been tested with [Laravel WebSockets](https://beyondco.de/docs/laravel-websockets/getting-started/introduction). Although not explicitly tested with Pusher.com, it is expected to work with Pusher due to protocol compatibility.
+This package has been tested with [Laravel WebSockets](https://beyondco.de/docs/laravel-websockets/getting-started/introduction) from [BeyondCode](https://beyondco.de/). Although not explicitly tested with Pusher.com, it is expected to work with Pusher due to protocol compatibility.
+
 
 ## ✨ Features
 - **WebSocket Connection Management**: Connect, disconnect, and manage state seamlessly.
@@ -23,14 +49,15 @@ This package has been tested with [Laravel WebSockets](https://beyondco.de/docs/
 - **Reconnection Logic**: Automatic reconnection with configurable retry attempts and intervals.
 - **Logging**: Configurable logging for debugging and monitoring.
 
-## Disclaimer
+## 👋 Disclaimer
 This package is designed to work with the Pusher WebSocket protocol. It has been thoroughly tested with [Laravel WebSockets](https://beyondco.de/docs/laravel-websockets/getting-started/introduction) but not explicitly with the official [pusher.com](https://pusher.com/docs/channels/) service. If it works with [Laravel WebSockets](https://beyondco.de/docs/laravel-websockets/getting-started/introduction), it is likely to work with [pusher.com](https://pusher.com/docs/channels/) due to protocol compatibility. Feedback from developers testing it with Pusher.com is highly appreciated.
+
 
 ## 🚀 Installation
 Add the package to your `pubspec.yaml`:
 ```yaml
 dependencies:
-  tarsier_websocket_client: ^1.0.0
+  tarsier_websocket_client: ^1.0.1
 ```
 Install it by running:
 ```sh

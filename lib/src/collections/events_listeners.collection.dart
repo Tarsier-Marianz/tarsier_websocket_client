@@ -1,4 +1,4 @@
-import '../utils/collection.dart';
+import '../models/collection.dart';
 
 /// Manages a collection of event listeners for Pusher channels.
 ///

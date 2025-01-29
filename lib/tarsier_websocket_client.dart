@@ -27,3 +27,10 @@ library tarsier_websocket_client;
 export 'src/tarsier_websocket_client_base.dart';
 export 'src/pusher_client_socket.dart';
 export 'src/misc/options.dart';
+export 'src/channels/channel.dart';
+export 'src/utils/print_debug.dart';
+export 'src/utils/debug_utils.dart';
+
+export 'src/websockets/websocket_client/web_socket_client.dart';
+export 'src/websockets/websocket_channel/web_socket_channel.dart';
+export 'src/websockets/websocket_channel/io.dart';

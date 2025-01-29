@@ -1,6 +1,6 @@
 import '../channels/channel.dart';
 import '../pusher_client_socket.dart';
-import '../utils/collection.dart';
+import '../models/collection.dart';
 
 /// Represents a collection of channels in Pusher.
 ///

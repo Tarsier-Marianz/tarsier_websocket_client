@@ -4,11 +4,13 @@ import 'dart:io';
 
 import 'package:meta/meta.dart';
 import 'package:tarsier_websocket_client/src/channels/channel.dart';
-import 'package:tarsier_websocket_client/src/misc/channels.collection.dart';
-import 'package:tarsier_websocket_client/src/misc/events_listeners.collection.dart';
+import 'package:tarsier_websocket_client/src/collections/channels.collection.dart';
+import 'package:tarsier_websocket_client/src/collections/events_listeners.collection.dart';
 import 'package:tarsier_websocket_client/src/misc/options.dart';
+import 'package:tarsier_websocket_client/src/models/connection_state_change.dart';
+import 'package:tarsier_websocket_client/src/utils/print_debug.dart';
+import 'package:tarsier_websocket_client/src/websockets/websocket_client/web_socket_client.dart';
 import 'package:uuid/uuid.dart';
-import 'package:web_socket_client/web_socket_client.dart';
 
 /// A client for connecting to a Pusher server.
 ///
@@ -50,10 +52,10 @@ class PusherClient {
   /// Whether the client is currently connected to the Pusher server.
   bool get connected => _connected;
 
-  ConnectionState _connectionState = const Disconnected();
+  SocketConnectionState _connectionState = const Disconnected();
 
   /// The current connection state of the client.
-  ConnectionState get connectionState => _connectionState;
+  SocketConnectionState get connectionState => _connectionState;
 
   WebSocket get _socket {
     if (__socket != null) return __socket!;
@@ -80,14 +82,14 @@ class PusherClient {
   /// Optionally, a [code] and [reason] can be provided to describe the
   /// reason for disconnection.
   void disconnect([int? code, String? reason]) {
-    options.log("DISCONNECT", null, "code: $code\n  reason: $reason");
+    options.log("DISCONNECT", null, "code: $code,  reason: $reason");
 
     _socket.close(code, reason);
     __socket = null;
   }
 
   /// Handles changes in the WebSocket connection state.
-  void _onConnectionStateChange(ConnectionState state) {
+  void _onConnectionStateChange(SocketConnectionState state) {
     final states = {
       const Connecting(): 'CONNECTING',
       const Connected(): 'CONNECTED',
@@ -105,7 +107,12 @@ class PusherClient {
     _connectionState = state;
     _connected = state is Connected;
 
-    _onEvent("connection_state_changed", state);
+    // _onEvent("connection_state_changed", state);
+    _onEvent(
+        "connection_state_changed",
+        ConnectionStateChange(
+            previousState: states[_connectionState],
+            currentState: states[state]));
 
     if (state is Connecting) {
       _onEvent('connecting', null);
@@ -224,7 +231,9 @@ class PusherClient {
         if (data is String) {
           try {
             data = jsonDecode(data);
-          } catch (e) {}
+          } catch (e) {
+            printError('_onMessageReceived', e.toString());
+          }
         }
 
         _onEvent(eventName, data, event["channel"]);
@@ -262,7 +271,7 @@ class PusherClient {
   /// The [event] parameter specifies the event name. The optional [data]
   /// parameter is the event payload, and [channel] specifies the target channel.
   void sendEvent(String event, [dynamic data, String? channel]) {
-    options.log("SEND_EVENT", null, "event: $event\n  data: $data");
+    options.log("SEND_EVENT", null, "event: $event, data: $data");
     _socket.send(jsonEncode({
       "event": event,
       "data": data,
@@ -274,7 +283,7 @@ class PusherClient {
   ///
   /// The [listener] is a callback that is invoked whenever the client's
   /// connection state changes. The new state is passed as a parameter.
-  void onConnectionStateChange(Function(ConnectionState) listener) =>
+  void onConnectionStateChange(Function(ConnectionStateChange) listener) =>
       bind("connection_state_changed", listener);
 
   /// Binds a listener to the connecting event.

@@ -1,4 +1,15 @@
+## 1.0.1
+- Upgraded environment SDK constraint
+- Upgraded some dependencies
+- Added colorized log printing
+- Added some necessary classes for enhancement
+* Fixed issue of flutter pinning 
++ Added new flutter example project
++ Added initial github workflow
+
+
 ## 1.0.0-dev
+
 - ### Added
     - Initial release of the `Tarsier WebSocket Client` package.
     - Implemented the `TarsierWebsocketClient` class for managing WebSocket connections and interacting with real-time events.

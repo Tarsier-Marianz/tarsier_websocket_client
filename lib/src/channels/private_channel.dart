@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../utils/auth_data.dart';
-import '../utils/member.dart';
+import '../models/auth_data.dart';
+import '../models/member.dart';
 import 'channel.dart';
 
 /// Represents a private channel in Pusher, which allows for authenticated user interactions.
@@ -68,7 +68,7 @@ class PrivateChannel extends Channel {
     options.log(
       "AUTH_RESPONSE",
       name,
-      "options: $authOptions\n  payload: $payload\n  response: ${response.body}",
+      "options: $authOptions, payload: $payload,  response: ${response.body}",
     );
 
     if (response.statusCode == 200) {
@@ -138,7 +138,7 @@ class PrivateChannel extends Channel {
   /// with "client-" to indicate that it is a client event. The optional
   /// [data] parameter contains the data to be sent with the event.
   void trigger(String event, [data]) {
-    options.log("TRIGGER", name, "event: $event\n  data: $data");
+    options.log("TRIGGER", name, "event: $event  data: $data");
 
     if (!event.startsWith("client-")) {
       event = "client-$event";
